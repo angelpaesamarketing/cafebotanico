@@ -371,8 +371,8 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
 .intro__box{width:min(80vw,min(64vh,440px))}
 .intro .logo{width:100%;height:auto;color:var(--ink)}
 .intro .hair{stroke-width:1.05;opacity:.7}
-.intro .logo__word{font-family:var(--cond);font-weight:600;
-  font-size:34px;letter-spacing:.012em;fill:var(--ink)}
+.intro .logo__word{font-family:'Anton',Impact,sans-serif;font-weight:400;
+  font-size:33px;letter-spacing:.045em;fill:var(--ink)}
 
 .intro .d{stroke-dasharray:var(--len,400);stroke-dashoffset:var(--len,400)}
 @keyframes draw{to{stroke-dashoffset:0}}
