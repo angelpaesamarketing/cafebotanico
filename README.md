@@ -29,25 +29,43 @@ Sacada de su Instagram, no de una plantilla:
 
 ## La intro
 
-Sólo el logo, ~3,5 s. Se reproduce **una vez por sesión** (`sessionStorage`),
+Sólo el logo, ~2,4 s. Se reproduce **una vez por sesión** (`sessionStorage`),
 se salta con el botón o un clic, se desactiva sola con `prefers-reduced-motion`
 y se puede repetir desde el pie.
 
-El dibujo es una sola imagen, así que la animación se hace con dos copias
-recortadas por `clip-path`: la de abajo (taza y plato) entra con un fundido, y
-la de arriba se revela creciendo hacia arriba, de modo que el tallo sale de la
-taza, se van abriendo las hojas y al final aparece la flor.
+El dibujo es una sola imagen, así que se parte en tres capas con `clip-path`.
+Los cortes salen de medir la tinta del propio dibujo por filas:
+
+```
+flor            0 – 28,6 %
+tallo y hojas  28,6 – 60,7 %
+taza y plato   60,7 – 100 %
+```
+
+- La **taza** entra con un fundido corto.
+- El **tallo** no se corta con una línea recta: se descubre con una máscara de
+  degradado que sube, así que el borde va difuminado y parece que crece en vez
+  de aparecer por trozos. El degradado se mueve con una custom property
+  registrada (`@property --brote`), que es lo que permite interpolarla.
+  Su recorrido está ajustado justo a la banda del tallo para que el crecimiento
+  ocupe toda la duración.
+- La **flor** se abre aparte, escalando desde el punto donde acaban las hojas,
+  con un poco de rebote.
 
 | t | qué pasa |
 |---|---|
-| 0,15 s | entra la taza con el plato |
-| 0,78 s | el tallo empieza a salir de la taza |
-| ~1,4 s | se abren el primer par de hojas |
-| ~1,8 s | el segundo par |
-| ~2,1 s | se abre la flor |
-| 2,1 s | aparece **CAFE BOTANICO** en Anton |
+| 0,05 s | entra la taza con el plato |
+| 0,32 s | asoma el tallo por el borde de la taza |
+| ~0,6 s | se abre el primer par de hojas |
+| ~0,9 s | el segundo par |
+| 0,82 s | empieza a abrirse la flor |
+| 1,34 s | entra **CAFE BOTANICO** en Anton |
 
 ![La planta saliendo de la taza](storyboard-intro.png)
+
+Las animaciones arrancan en pausa y no se sueltan hasta que el dibujo está
+decodificado (`img.decode()`): si no, el crecimiento ocurre mientras la imagen
+todavía no se ha pintado y te pierdes media secuencia.
 
 ## Estructura
 

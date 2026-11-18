@@ -6,7 +6,7 @@
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ───────── INTRO (sólo el logo) ───────── */
-  var INTRO_MS = 3500;
+  var INTRO_MS = 2400;
   var KEY = 'botanico-intro-v2';
   var introNode = qs('#intro');
   var introHTML = introNode ? introNode.outerHTML : '';
@@ -41,7 +41,24 @@
     node.addEventListener('click', function (e) {
       if (e.target.id !== 'skip') skip();
     });
-    timers.push(setTimeout(skip, INTRO_MS));
+
+    /* el dibujo pesa, así que no se arranca hasta tenerlo: si no, el
+       crecimiento ocurre mientras la imagen todavía no está pintada */
+    var arrancar = function () {
+      if (node.classList.contains('ready')) return;
+      node.classList.add('ready');
+      timers.push(setTimeout(skip, INTRO_MS));
+    };
+    var img = qs('.dib__taza', node);
+    if (img && img.decode) {
+      img.decode().then(arrancar, arrancar);
+    } else if (img && !img.complete) {
+      img.addEventListener('load', arrancar);
+      img.addEventListener('error', arrancar);
+    } else {
+      arrancar();
+    }
+    timers.push(setTimeout(arrancar, 2500));   // por si la imagen nunca llega
     try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
   }
 
