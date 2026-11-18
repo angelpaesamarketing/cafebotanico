@@ -102,3 +102,11 @@ assets/img/                   fotos
 - **Logo**: el dibujo actual está generado, no es el archivo original del
   local. Si aparece el vectorial (`.ai`, `.eps`, `.svg`), merece la pena
   cambiarlo: escalaría sin pérdida y pesaría mucho menos.
+
+---
+
+## Otra web en este repo
+
+`jota-cafe/` — web para **Jota Café** (Paseo Gran Vía 33), independiente de esta:
+mismo planteamiento (HTML/CSS/JS plano, sin build) y su propio README con qué
+datos son reales y cuáles faltan.
