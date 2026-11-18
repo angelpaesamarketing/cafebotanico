@@ -20,8 +20,11 @@ Sacada de su Instagram, no de una plantilla:
 - **Fotos como copias de laboratorio**: borde blanco, giro ligero, sombra y, en
   el hero, un trozo de cinta de carrocero.
 - **A oscuras, alumbrada por las lámparas.** La web está de noche: la pared se
-  apaga y lo único que ilumina son un farolillo de globo, una lámpara de
-  alabastro art déco y dos bombillas colgantes, repartidas por la página. Cada
+  apaga y lo único que ilumina son seis lámparas distintas repartidas por la
+  página — un **foco de cuadro** de latón que apunta directo a BOTÁNICO, un
+  **farolillo de globo**, una **lámpara de alabastro** art déco, una **opalina**
+  de sobremesa, una **bombilla colgante** y una **guirnalda de bolitas** que
+  cruza el bloque de cócteles. Cada
   una echa su charco de luz cálida (`mix-blend-mode:screen`), de modo que el
   papel pintado y las plantas sólo se ven de verdad donde hay luz. Las esquinas
   se van a negro con una viñeta.
@@ -32,9 +35,9 @@ Sacada de su Instagram, no de una plantilla:
   propia paleta apagada. El contenido va sobre un panel apenas más claro que la
   pared y el pie queda directamente sobre el estampado.
 - **Enredaderas colgando** por los dos lados, de arriba del todo hasta el
-  último píxel del pie. Son SVG en tres piezas: la mata de arriba, un tramo que
-  se repite todo lo largo que haga falta y la punta. El tramo lleva dos tallos
-  trenzados y encaja consigo mismo por arriba y por abajo. Cada hoja tiene una
+  último píxel del pie, sin desvanecerse al final. Son SVG en dos piezas: la
+  mata de arriba y un tramo que se repite todo lo largo que haga falta, con dos
+  tallos trenzados que encajan consigo mismos por arriba y por abajo. Cada hoja tiene una
   de tres formas, nervadura secundaria, medio tono de luz y, a veces, una
   mancha clara de variegada.
 - **Pizarra con marco de madera** para las tartitas.
@@ -96,10 +99,13 @@ assets/js/main.js
 assets/img/logo-dibujo.webp   el logo, recortado sobre transparente
 assets/img/letras/            las ocho letras del titular
 assets/img/papel-pintado.svg  el estampado de la pared (baldosa)
-assets/img/rama-*.svg         la enredadera: mata, tramo y punta
+assets/img/rama-*.svg         la enredadera: mata y tramo repetible
+assets/img/foco.svg           foco de cuadro, el que apunta al titular
 assets/img/lampara-deco.svg   lámpara de alabastro art déco
+assets/img/tulipa.svg         opalina de sobremesa
 assets/img/farolillo.svg      farolillo de globo
 assets/img/bombilla.svg       bombilla colgante
+assets/img/guirnalda.svg      guirnalda de bolitas
 assets/img/                   fotos
 ```
 

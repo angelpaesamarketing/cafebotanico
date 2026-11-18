@@ -379,8 +379,6 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
   background-image:url(../img/rama-tramo.svg);
   background-repeat:repeat-y;
   background-size:100% auto;
-  -webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 150px),transparent calc(100% - 56px));
-          mask-image:linear-gradient(to bottom,#000 calc(100% - 150px),transparent calc(100% - 56px));
 }
 /* la mata de arriba */
 .rama__mata{
@@ -389,11 +387,7 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
   background-size:100% 100%;
 }
 /* la punta, que acaba dentro del pie */
-.rama__cola{
-  bottom:0;height:calc(var(--rw) * 240 / 170);
-  background-image:url(../img/rama-cola.svg);
-  background-size:100% 100%;
-}
+
 
 /* ══════════ REVELADO ══════════ */
 .rv{opacity:0;transform:translateY(22px);
@@ -596,4 +590,71 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
 @media (max-width:980px){
   .lampara--bomb,.lampara--bomb2,.lampara--farol2{display:none}
   .lampara--deco{right:auto;left:clamp(6px,4vw,40px)}
+}
+
+/* ── el foco que apunta directo a BOTÁNICO ── */
+.lampara--foco{
+  top:clamp(70px,8.8vh,124px);left:clamp(-34px,-1.4vw,-10px);
+  width:clamp(92px,9.6vw,154px);height:clamp(76px,7.9vw,127px);
+  background-image:url(../img/foco.svg);
+  z-index:5;
+}
+/* el haz: un trapecio que baja desde la boca de la pantalla */
+.lampara--foco::before{
+  content:'';
+  left:auto;top:auto;transform:none;
+  right:-6%;bottom:-46%;
+  width:clamp(300px,36vw,660px);height:clamp(150px,18vw,330px);
+  background:linear-gradient(104deg,
+    rgba(255,230,180,.46) 0%,
+    rgba(255,208,140,.20) 46%,
+    rgba(240,180,96,.06) 74%,
+    transparent 92%);
+  clip-path:polygon(0 0, 100% 48%, 100% 100%, 0 26%);
+  filter:blur(9px);
+  mix-blend-mode:screen;
+}
+/* el charco que cae sobre las letras */
+.lampara--foco::after{
+  content:'';position:absolute;pointer-events:none;
+  left:92%;top:132%;
+  width:clamp(340px,42vw,760px);height:clamp(150px,17vw,310px);
+  transform:translate(-50%,-50%) rotate(-3deg);
+  background:radial-gradient(ellipse at center,
+    rgba(255,230,180,.52) 0%,
+    rgba(255,206,136,.26) 34%,
+    rgba(232,168,80,.09) 58%,
+    transparent 78%);
+  mix-blend-mode:screen;
+}
+/* bajo el foco, las letras se leen mucho mejor */
+.word .l{filter:drop-shadow(0 9px 16px rgba(0,0,0,.65)) brightness(1.16) contrast(1.04)}
+.word::before{
+  background:radial-gradient(ellipse at 48% 52%,
+    rgba(255,226,172,.42) 0%, rgba(255,204,132,.2) 36%, transparent 68%);
+}
+
+/* ── lámpara de opalina, en La casa ── */
+.lampara--tulipa{
+  bottom:clamp(8px,3.4vw,48px);right:clamp(8px,5vw,118px);
+  width:clamp(78px,8.8vw,166px);height:clamp(82px,9.3vw,175px);
+  background-image:url(../img/tulipa.svg);background-position:bottom center;
+  --ly:30%;--lz:clamp(460px,56vw,1060px);
+}
+/* ── guirnalda de bolitas, cruzando el bloque de noche ── */
+.lampara--guirnalda{
+  top:clamp(6px,2vw,30px);left:6%;right:6%;width:auto;
+  height:clamp(48px,7vw,130px);
+  background-image:url(../img/guirnalda.svg);background-size:100% 100%;
+  --ly:58%;--lz:clamp(520px,64vw,1180px);
+}
+.lampara--guirnalda::before{
+  width:100%;height:clamp(300px,36vw,680px);
+  background:radial-gradient(ellipse at center,
+    rgba(255,224,168,.32) 0%, rgba(250,196,116,.16) 34%, transparent 70%);
+}
+
+@media (max-width:980px){
+  .lampara--foco{display:none}
+  .lampara--tulipa{right:auto;left:clamp(6px,4vw,40px)}
 }
