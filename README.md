@@ -19,15 +19,24 @@ Sacada de su Instagram, no de una plantilla:
   galvanizada minúscula, I roja, C azul y O galvanizada.
 - **Fotos como copias de laboratorio**: borde blanco, giro ligero, sombra y, en
   el hero, un trozo de cinta de carrocero.
+- **A oscuras, alumbrada por las lámparas.** La web está de noche: la pared se
+  apaga y lo único que ilumina son un farolillo de globo, una lámpara de
+  alabastro art déco y dos bombillas colgantes, repartidas por la página. Cada
+  una echa su charco de luz cálida (`mix-blend-mode:screen`), de modo que el
+  papel pintado y las plantas sólo se ven de verdad donde hay luz. Las esquinas
+  se van a negro con una viñeta.
 - **Papel pintado floral en toda la web**: el fondo es el estampado de la
-  pared del local —marfil, flores de coral, hojas y pajaritos— dibujado en SVG
-  (`papel-pintado.svg`) y repetido. El contenido va encima sobre un panel color
-  pared, como el tabique claro del local, así que el estampado asoma por los
-  márgenes y el pie queda directamente sobre él.
-- **Enredaderas colgando** por los dos lados, de arriba del todo hasta el pie.
-  Son SVG en tres piezas: la mata de arriba, un tramo que se repite todo lo
-  largo que haga falta y la punta, que acaba dentro del pie. El tramo lleva dos
-  tallos trenzados y encaja consigo mismo por arriba y por abajo.
+  pared del local —flores de coral, hojas y pajaritos— dibujado en SVG. Hay dos
+  versiones del mismo dibujo, de día y de noche: taparlo con un velo negro
+  aplastaba el contraste y lo hacía desaparecer, así que la nocturna tiene su
+  propia paleta apagada. El contenido va sobre un panel apenas más claro que la
+  pared y el pie queda directamente sobre el estampado.
+- **Enredaderas colgando** por los dos lados, de arriba del todo hasta el
+  último píxel del pie. Son SVG en tres piezas: la mata de arriba, un tramo que
+  se repite todo lo largo que haga falta y la punta. El tramo lleva dos tallos
+  trenzados y encaja consigo mismo por arriba y por abajo. Cada hoja tiene una
+  de tres formas, nervadura secundaria, medio tono de luz y, a veces, una
+  mancha clara de variegada.
 - **Pizarra con marco de madera** para las tartitas.
 - **Bloque de noche** para tés y cócteles, con la luz de las guirnaldas.
 - Paleta tomada de sus fotos: crema, rojo teja, verde monstera, azul desvaído,
@@ -40,6 +49,9 @@ Sacada de su Instagram, no de una plantilla:
 Sólo el logo, ~2,4 s. Se reproduce **una vez por sesión** (`sessionStorage`),
 se salta con el botón o un clic, se desactiva sola con `prefers-reduced-motion`
 y se puede repetir desde el pie.
+
+El logo es grafito oscuro, así que de noche va invertido: se lee como trazo
+claro sobre el fondo, casi como una tiza.
 
 El dibujo es una sola imagen, así que se parte en tres capas con `clip-path`.
 Los cortes salen de medir la tinta del propio dibujo por filas:
@@ -85,6 +97,9 @@ assets/img/logo-dibujo.webp   el logo, recortado sobre transparente
 assets/img/letras/            las ocho letras del titular
 assets/img/papel-pintado.svg  el estampado de la pared (baldosa)
 assets/img/rama-*.svg         la enredadera: mata, tramo y punta
+assets/img/lampara-deco.svg   lámpara de alabastro art déco
+assets/img/farolillo.svg      farolillo de globo
+assets/img/bombilla.svg       bombilla colgante
 assets/img/                   fotos
 ```
 
