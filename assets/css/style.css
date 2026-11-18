@@ -121,7 +121,7 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
   padding-top:10px;padding-bottom:10px;box-shadow:0 1px 0 rgba(35,31,26,.14)}
 .hdr__brand{display:flex;align-items:center;gap:.65rem;margin-right:auto;
   font-family:var(--cond);font-weight:600;font-size:.95rem;letter-spacing:.1em;text-transform:uppercase}
-.hdr__mark{width:23px;height:25px;color:var(--ink)}
+.hdr__mark{width:auto;height:31px;mix-blend-mode:multiply;filter:contrast(1.5) brightness(.93)}
 .hdr__nav{display:flex;gap:1.9rem;font-family:var(--cond);font-weight:400;
   font-size:.76rem;letter-spacing:.18em;text-transform:uppercase}
 .hdr__nav a{position:relative;padding:.3em 0}
@@ -179,8 +179,8 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
 .hero__pic{position:relative;justify-self:center;width:min(100%,470px)}
 .hero__pic .print img{aspect-ratio:910/607}
 .hero__seal{
-  position:absolute;right:-6%;bottom:-13%;width:clamp(74px,8.5vw,112px);
-  color:var(--ink);opacity:.85;
+  position:absolute;right:-7%;bottom:-15%;width:auto;height:clamp(96px,11vw,148px);
+  opacity:.95;mix-blend-mode:multiply;filter:contrast(1.4) brightness(.94);
   animation:sway 9s ease-in-out infinite;
 }
 @keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
@@ -324,7 +324,7 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
 
 /* ── Footer ── */
 .ftr{text-align:center;padding:clamp(56px,8vh,104px) var(--pad) 40px}
-.ftr__mark{width:40px;height:43px;margin:0 auto 16px;color:var(--ink)}
+.ftr__mark{width:auto;height:92px;margin:0 auto 14px;mix-blend-mode:multiply;filter:contrast(1.35) brightness(.95)}
 .ftr__name{font-family:var(--cond);font-weight:600;font-size:1.5rem;
   letter-spacing:.2em;text-transform:uppercase;margin:0 0 .35em}
 .ftr__sub{font-family:var(--cond);font-weight:300;font-size:.74rem;letter-spacing:.2em;
@@ -367,62 +367,48 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
 }
 
 /* ══════════════════════════════════════════════════════════════
-   INTRO — sólo el logo, dibujándose
+   INTRO — el dibujo del logo, con la planta saliendo de la taza
    ══════════════════════════════════════════════════════════════ */
 .intro{
   position:fixed;inset:0;z-index:1000;background:var(--paper);
   display:grid;place-items:center;overflow:hidden;
 }
-.intro.done{opacity:0;transform:scale(1.04);pointer-events:none;
-  transition:opacity .75s var(--e),transform 1s var(--e)}
-.intro__box{width:min(80vw,min(64vh,440px))}
-.intro .logo{width:100%;height:auto;color:var(--ink)}
-.intro .hair{stroke-width:1.05;opacity:.7}
-.intro .logo__word{font-family:'Anton',Impact,sans-serif;font-weight:400;
-  font-size:33px;letter-spacing:.045em;fill:var(--ink)}
+.intro.done{opacity:0;transform:scale(1.03);pointer-events:none;
+  transition:opacity .7s var(--e),transform .95s var(--e)}
+.intro__box{display:flex;flex-direction:column;align-items:center;
+  gap:clamp(14px,2.4vh,26px);width:min(78vw,min(62vh,410px))}
 
-.intro .d{stroke-dasharray:var(--len,400);stroke-dashoffset:var(--len,400)}
-@keyframes draw{to{stroke-dashoffset:0}}
-@keyframes fade{to{opacity:var(--o,1)}}
-@keyframes bloom{
-  0%{transform:scale(.25) rotate(-20deg);opacity:0}
-  60%{opacity:1}
-  100%{transform:scale(1) rotate(0deg);opacity:1}
+.dib{position:relative;width:100%;aspect-ratio:629/1043}
+.dib img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+/* la taza y el plato: la parte de abajo del dibujo */
+.dib__taza{clip-path:inset(59.5% 0 0 0);opacity:0;
+  animation:tazaIn .75s var(--e) .15s forwards}
+/* el tallo, las hojas y la flor: se revelan creciendo hacia arriba */
+.dib__plant{clip-path:inset(59.5% 0 40.5% 0);
+  animation:crecer 1.35s cubic-bezier(.3,.7,.3,1) .78s forwards}
+@keyframes tazaIn{
+  from{opacity:0;transform:translateY(10px) scale(.97)}
+  to{opacity:1;transform:none}
+}
+@keyframes crecer{
+  from{clip-path:inset(59.5% 0 40.5% 0)}
+  to{clip-path:inset(0 0 40.5% 0)}
 }
 
-/* taza */
-.intro .g-cup .d:nth-of-type(1){--len:300;animation:draw .62s ease-out .15s forwards}
-.intro .g-cup .d:nth-of-type(2){--len:230;animation:draw .55s ease-out .45s forwards}
-.intro .g-cup .d:nth-of-type(3){--len:120;animation:draw .4s ease-out .7s forwards}
-.intro .g-cup .d:nth-of-type(4){--len:400;animation:draw .6s ease-out .72s forwards}
-.intro .g-cup .d:nth-of-type(5){--len:150;animation:draw .4s ease-out .95s forwards}
-.intro .trama{opacity:0;--o:1;animation:fade .6s ease-out 1s forwards}
-/* B */
-.intro .g-b .d:nth-of-type(1){--len:210;animation:draw .5s ease-out 1.05s forwards}
-.intro .g-b .d:nth-of-type(2){--len:60;animation:draw .3s ease-out 1.35s forwards}
-.intro .g-b .d:nth-of-type(3){--len:70;animation:draw .3s ease-out 1.45s forwards}
-/* tallo y hojas */
-.intro .stem{--len:95;animation:draw .5s ease-out 1.5s forwards}
-.intro .leaves .lf:nth-of-type(1){--len:150;animation:draw .38s ease-out 1.85s forwards}
-.intro .leaves .lf:nth-of-type(2){--len:110;animation:draw .34s ease-out 1.97s forwards}
-.intro .leaves .lf:nth-of-type(3){--len:150;animation:draw .38s ease-out 1.91s forwards}
-.intro .leaves .lf:nth-of-type(4){--len:110;animation:draw .34s ease-out 2.03s forwards}
-.intro .venas{opacity:0;--o:.7;animation:fade .5s ease-out 2.2s forwards}
-/* flor */
-.intro .g-flower{transform-origin:150px 72px;transform:scale(.25) rotate(-20deg);opacity:0;
-  animation:bloom .8s cubic-bezier(.2,1.25,.4,1) 2.28s forwards}
-.intro .petalos{--len:330;animation:draw .62s ease-out 2.3s forwards}
-.intro .ojo{--len:40;animation:draw .3s ease-out 2.7s forwards}
-.intro .rayas{opacity:0;--o:.72;animation:fade .55s ease-out 2.75s forwards}
-/* wordmark */
-.intro .logo__word{opacity:0;animation:fade .5s ease-out 3.15s forwards}
+.intro__word{
+  margin:0;font-family:'Anton',Impact,sans-serif;font-weight:400;
+  font-size:clamp(1.05rem,2.5vw,1.6rem);letter-spacing:.045em;
+  text-transform:uppercase;color:var(--ink);line-height:1;
+  opacity:0;animation:palabra .55s var(--e) 2.1s forwards;
+}
+@keyframes palabra{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
 
 .intro__skip{
   position:absolute;right:max(16px,3vw);bottom:max(16px,3vh);
   font-family:var(--cond);font-weight:400;font-size:.68rem;letter-spacing:.24em;
   text-transform:uppercase;color:rgba(35,31,26,.45);
   padding:.65em 1.2em;box-shadow:inset 0 0 0 1px rgba(35,31,26,.2);border-radius:999px;
-  opacity:0;animation:fade .5s ease-out .8s forwards;transition:color .3s,box-shadow .3s;
+  opacity:0;animation:palabra .5s ease-out .9s forwards;transition:color .3s,box-shadow .3s;
 }
 .intro__skip:hover{color:var(--ink);box-shadow:inset 0 0 0 1px rgba(35,31,26,.5)}
 
@@ -430,5 +416,7 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
   *{animation-duration:.01ms !important;animation-iteration-count:1 !important;
     transition-duration:.01ms !important;scroll-behavior:auto !important}
   .rv{opacity:1;transform:none}
-  .intro .d{stroke-dashoffset:0}
+  .dib__taza{opacity:1}
+  .dib__plant{clip-path:inset(0 0 40.5% 0)}
+  .intro__word{opacity:1}
 }

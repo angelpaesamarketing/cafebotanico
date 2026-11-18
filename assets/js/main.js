@@ -6,7 +6,7 @@
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ───────── INTRO (sólo el logo) ───────── */
-  var INTRO_MS = 4200;
+  var INTRO_MS = 3500;
   var KEY = 'botanico-intro-v2';
   var introNode = qs('#intro');
   var introHTML = introNode ? introNode.outerHTML : '';
