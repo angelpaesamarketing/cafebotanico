@@ -374,14 +374,15 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
 .rama i{position:absolute;left:0;right:0;display:block;background-repeat:no-repeat;background-position:top center;
   filter:saturate(.8) brightness(.74) contrast(1.08) drop-shadow(2px 7px 11px rgba(0,0,0,.65))}
 /* el tallo se repite todo lo largo que haga falta y se desvanece al final */
-.rama__tallo{
+.rama i.rama__tallo{
   top:0;bottom:0;
   background-image:url(../img/rama-tramo.svg);
   background-repeat:repeat-y;
+  background-position:top center;
   background-size:100% auto;
 }
 /* la mata de arriba */
-.rama__mata{
+.rama i.rama__mata{
   top:0;height:calc(var(--rw) * 300 / 170);
   background-image:url(../img/rama-cabeza.svg);
   background-size:100% 100%;
@@ -522,12 +523,12 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
 .hero,.casa,.bizco,.sala,.muro,.noche,.visita{position:relative}
 
 .lampara{
-  position:absolute;display:block;pointer-events:none;z-index:5;
+  position:absolute;display:block;pointer-events:none;
   background-repeat:no-repeat;background-position:top center;background-size:100% auto;
 }
 /* el charco de luz que echa cada una */
 .lampara::before{
-  content:'';position:absolute;left:50%;top:var(--ly,62%);
+  content:'';position:absolute;left:var(--lx,50%);top:var(--ly,62%);
   width:var(--lz,760px);height:var(--lz,760px);
   transform:translate(-50%,-50%);
   background:radial-gradient(circle,
@@ -543,27 +544,27 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
   top:-26px;right:clamp(6px,5vw,104px);
   width:clamp(74px,8vw,142px);height:clamp(158px,17vw,304px);
   background-image:url(../img/farolillo.svg);
-  --ly:46%;--lz:clamp(420px,52vw,980px);
+  --lx:50%;--ly:40%;--lz:clamp(420px,52vw,980px);
 }
 .lampara--farol2{
   top:-10px;right:clamp(10px,10vw,210px);
   width:clamp(62px,6.4vw,112px);height:clamp(132px,13.6vw,240px);
   background-image:url(../img/farolillo.svg);
-  --ly:44%;--lz:clamp(360px,42vw,780px);
+  --lx:50%;--ly:40%;--lz:clamp(360px,42vw,780px);
 }
 /* lámpara de alabastro, apoyada en el aparador */
 .lampara--deco{
   bottom:clamp(10px,4vw,56px);right:clamp(10px,6vw,130px);
   width:clamp(72px,8.4vw,158px);height:clamp(95px,11vw,208px);
   background-image:url(../img/lampara-deco.svg);background-position:bottom center;
-  --ly:34%;--lz:clamp(440px,54vw,1020px);
+  --lx:50%;--ly:40%;--lz:clamp(440px,54vw,1020px);
 }
 /* bombillas colgantes */
 .lampara--bomb{
   top:-18px;right:clamp(14px,16vw,330px);
   width:clamp(44px,4.4vw,80px);height:clamp(120px,12vw,218px);
   background-image:url(../img/bombilla.svg);
-  --ly:78%;--lz:clamp(380px,44vw,820px);
+  --lx:50%;--ly:76%;--lz:clamp(380px,44vw,820px);
 }
 .lampara--bomb2{
   top:-24px;left:clamp(10px,12vw,250px);
@@ -599,31 +600,31 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
   background-image:url(../img/foco.svg);
   z-index:5;
 }
-/* el haz: un trapecio que baja desde la boca de la pantalla */
+/* el haz nace exactamente en la boca de la pantalla (83% 64% de la lámpara)
+   y se abre en diagonal, sin recortes: es un degradado, no una forma */
 .lampara--foco::before{
-  content:'';
-  left:auto;top:auto;transform:none;
-  right:-6%;bottom:-46%;
-  width:clamp(300px,36vw,660px);height:clamp(150px,18vw,330px);
-  background:linear-gradient(104deg,
-    rgba(255,230,180,.46) 0%,
-    rgba(255,208,140,.20) 46%,
-    rgba(240,180,96,.06) 74%,
-    transparent 92%);
-  clip-path:polygon(0 0, 100% 48%, 100% 100%, 0 26%);
-  filter:blur(9px);
+  --bh:clamp(210px,23vw,430px);
+  left:83%;top:calc(64% - var(--bh) / 2);
+  width:clamp(400px,48vw,900px);height:var(--bh);
+  transform:rotate(30deg);transform-origin:0 50%;
+  background:radial-gradient(ellipse 104% 60% at 3% 50%,
+    rgba(255,240,206,.52) 0%,
+    rgba(255,219,158,.30) 18%,
+    rgba(246,190,112,.14) 40%,
+    rgba(214,150,70,.05) 62%,
+    transparent 80%);
   mix-blend-mode:screen;
 }
-/* el charco que cae sobre las letras */
+/* y el charco que queda sobre las letras */
 .lampara--foco::after{
   content:'';position:absolute;pointer-events:none;
-  left:92%;top:132%;
-  width:clamp(340px,42vw,760px);height:clamp(150px,17vw,310px);
-  transform:translate(-50%,-50%) rotate(-3deg);
+  left:360%;top:420%;
+  width:clamp(380px,46vw,820px);height:clamp(160px,18vw,330px);
+  transform:translate(-50%,-50%) rotate(-4deg);
   background:radial-gradient(ellipse at center,
-    rgba(255,230,180,.52) 0%,
-    rgba(255,206,136,.26) 34%,
-    rgba(232,168,80,.09) 58%,
+    rgba(255,236,192,.46) 0%,
+    rgba(255,210,142,.24) 32%,
+    rgba(228,164,78,.08) 58%,
     transparent 78%);
   mix-blend-mode:screen;
 }
@@ -639,14 +640,14 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
   bottom:clamp(8px,3.4vw,48px);right:clamp(8px,5vw,118px);
   width:clamp(78px,8.8vw,166px);height:clamp(82px,9.3vw,175px);
   background-image:url(../img/tulipa.svg);background-position:bottom center;
-  --ly:30%;--lz:clamp(460px,56vw,1060px);
+  --lx:50%;--ly:40%;--lz:clamp(460px,56vw,1060px);
 }
 /* ── guirnalda de bolitas, cruzando el bloque de noche ── */
 .lampara--guirnalda{
   top:clamp(6px,2vw,30px);left:6%;right:6%;width:auto;
   height:clamp(48px,7vw,130px);
   background-image:url(../img/guirnalda.svg);background-size:100% 100%;
-  --ly:58%;--lz:clamp(520px,64vw,1180px);
+  --lx:50%;--ly:62%;--lz:clamp(520px,64vw,1180px);
 }
 .lampara--guirnalda::before{
   width:100%;height:clamp(300px,36vw,680px);
@@ -657,4 +658,12 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
 @media (max-width:980px){
   .lampara--foco{display:none}
   .lampara--tulipa{right:auto;left:clamp(6px,4vw,40px)}
+}
+
+/* las lámparas de sobremesa necesitan dónde apoyarse: una repisa de madera */
+.lampara--tulipa::after,.lampara--deco::after{
+  content:'';position:absolute;left:-62%;right:-62%;bottom:-7px;height:10px;
+  border-radius:2px 2px 1px 1px;
+  background:linear-gradient(180deg,#75583A 0%,#56402A 45%,#31230F 100%);
+  box-shadow:0 8px 22px -7px rgba(0,0,0,.85), inset 0 1px 0 rgba(236,204,150,.28);
 }

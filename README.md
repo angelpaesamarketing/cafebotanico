@@ -35,7 +35,10 @@ Sacada de su Instagram, no de una plantilla:
   propia paleta apagada. El contenido va sobre un panel apenas más claro que la
   pared y el pie queda directamente sobre el estampado.
 - **Enredaderas colgando** por los dos lados, de arriba del todo hasta el
-  último píxel del pie, sin desvanecerse al final. Son SVG en dos piezas: la
+  último píxel del pie, sin desvanecerse al final. Ojo con el selector: `.rama i`
+  (clase + tipo) gana en especificidad a `.rama__tallo` (sólo clase), así que si
+  se declara ahí un `background-repeat` se come el `repeat-y` del tramo y la
+  planta se queda en un único trozo arriba. Son SVG en dos piezas: la
   mata de arriba y un tramo que se repite todo lo largo que haga falta, con dos
   tallos trenzados que encajan consigo mismos por arriba y por abajo. Cada hoja tiene una
   de tres formas, nervadura secundaria, medio tono de luz y, a veces, una
