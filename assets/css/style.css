@@ -32,7 +32,14 @@ body{
   font-family:var(--serif);font-weight:300;font-size:clamp(15.5px,1.05vw,17.5px);
   line-height:1.62;overflow-x:hidden;
 }
+body{position:relative}
 body.lock{overflow:hidden}
+main{
+  position:relative;z-index:2;
+  background:var(--paper);
+  margin-inline:clamp(0px,3.4vw,78px);
+  box-shadow:0 0 0 1px rgba(35,31,26,.07), 0 30px 80px -50px rgba(45,33,22,.6);
+}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
@@ -45,10 +52,12 @@ body::after{
   opacity:.14;mix-blend-mode:multiply;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-/* ── luz difusa de la pared ── */
+/* ── el papel pintado de la pared, de fondo en toda la web ── */
+body{background:url(../img/papel-pintado.svg) repeat 0 0 / 340px auto, var(--paper)}
+/* luz cálida por encima, como la del local */
 body::before{
-  content:'';position:fixed;inset:0;z-index:-1;
-  background:radial-gradient(120% 90% at 22% 8%,#F7F1E5 0%,var(--paper) 45%,#E7DCC8 100%);
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(135% 95% at 20% 4%,rgba(255,246,228,.5) 0%,rgba(236,224,200,.18) 48%,rgba(190,172,140,.26) 100%);
 }
 
 /* ══════════ TIPOGRAFÍA ══════════ */
@@ -112,13 +121,14 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
 
 /* ══════════ HEADER ══════════ */
 .hdr{
-  position:fixed;top:0;left:0;right:0;z-index:500;
+  position:fixed;z-index:500;top:0;left:0;right:0;z-index:500;
   display:flex;align-items:center;gap:2rem;
-  padding:clamp(13px,2vw,24px) var(--pad);
+  padding-block:clamp(13px,2vw,24px);
+  padding-inline:calc(clamp(0px,3.4vw,78px) + var(--pad));
   transition:background .45s,padding .45s var(--e),box-shadow .45s;
 }
-.hdr.stuck{background:rgba(239,231,217,.9);backdrop-filter:blur(12px);
-  padding-top:10px;padding-bottom:10px;box-shadow:0 1px 0 rgba(35,31,26,.14)}
+.hdr.stuck{background:rgba(239,231,217,.92);backdrop-filter:blur(12px);
+  padding-block:10px;box-shadow:0 1px 0 rgba(35,31,26,.14)}
 .hdr__brand{display:flex;align-items:center;gap:.65rem;margin-right:auto;
   font-family:var(--cond);font-weight:600;font-size:.95rem;letter-spacing:.1em;text-transform:uppercase}
 .hdr__mark{width:auto;height:31px;mix-blend-mode:multiply;filter:contrast(1.5) brightness(.93)}
@@ -157,7 +167,7 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
 
 /* letras desparejadas: las de verdad, recortadas de la pared */
 .word{
-  --u:clamp(48px,7.8vw,110px);
+  --u:clamp(46px,6.9vw,97px);
   display:flex;flex-wrap:wrap;align-items:flex-end;gap:0 .07em;
   font-size:var(--u);line-height:1;margin:0 0 .42em;
 }
@@ -201,7 +211,7 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
 .casa{position:relative;display:grid;grid-template-columns:1fr 1fr;
   gap:clamp(30px,6vw,86px);align-items:center}
 .casa::before{
-  content:'';position:absolute;inset:0;z-index:-1;opacity:.5;
+  content:'';position:absolute;inset:0;z-index:-1;opacity:0;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130' viewBox='0 0 130 130'%3E%3Cg fill='none' stroke='%23A9B596' stroke-width='1.2' stroke-linecap='round'%3E%3Cpath d='M22 112 C20 92 26 74 40 60'/%3E%3Cpath d='M26 92 C16 88 11 78 11 68 C21 70 27 80 26 92Z'/%3E%3Cpath d='M33 76 C34 64 41 55 51 50 C50 62 43 72 33 76Z'/%3E%3Cpath d='M95 60 C93 42 99 26 112 14'/%3E%3Cpath d='M99 42 C89 38 84 28 84 18 C94 20 100 30 99 42Z'/%3E%3C/g%3E%3Cg fill='none' stroke='%23C9A49B' stroke-width='1.2'%3E%3Ccircle cx='72' cy='30' r='9'/%3E%3Ccircle cx='72' cy='30' r='2.6'/%3E%3Ccircle cx='40' cy='118' r='6'/%3E%3C/g%3E%3Cg fill='%23C9A49B' opacity='.55'%3E%3Ccircle cx='110' cy='96' r='2.4'/%3E%3Ccircle cx='60' cy='88' r='1.8'/%3E%3C/g%3E%3C/svg%3E");
   -webkit-mask-image:radial-gradient(90% 75% at 50% 50%,#000 25%,transparent 78%);
   mask-image:radial-gradient(90% 75% at 50% 50%,#000 25%,transparent 78%);
@@ -323,7 +333,13 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
 .hrs li b{font-weight:500;font-variant-numeric:tabular-nums}
 
 /* ── Footer ── */
-.ftr{text-align:center;padding:clamp(56px,8vh,104px) var(--pad) 40px}
+.ftr{position:relative;z-index:2;text-align:center;padding:clamp(60px,9vh,116px) var(--pad) 44px}
+/* velo para que el pie se lea sobre el papel pintado */
+.ftr::before{
+  content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(58% 72% at 50% 48%,rgba(241,234,221,.94) 0%,rgba(241,234,221,.78) 52%,rgba(241,234,221,0) 84%);
+}
+.ftr > *{position:relative}
 .ftr__mark{width:auto;height:92px;margin:0 auto 14px;mix-blend-mode:multiply;filter:contrast(1.35) brightness(.95)}
 .ftr__name{font-family:var(--cond);font-weight:600;font-size:1.5rem;
   letter-spacing:.2em;text-transform:uppercase;margin:0 0 .35em}
@@ -337,6 +353,40 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
 .ftr__note{font-family:var(--cond);font-weight:300;font-size:.66rem;letter-spacing:.16em;
   text-transform:uppercase;color:rgba(35,31,26,.38);margin:0}
 
+/* ══════════════════════════════════════════════════════════════
+   ENREDADERAS — cuelgan desde arriba hasta el pie, por los dos lados
+   ══════════════════════════════════════════════════════════════ */
+.rama{
+  --rw:clamp(84px,9.5vw,172px);
+  position:absolute;top:0;bottom:0;width:var(--rw);
+  z-index:4;pointer-events:none;
+}
+.rama--izq{left:clamp(-34px,-1vw,0px)}
+.rama--der{right:clamp(-34px,-1vw,0px);transform:scaleX(-1)}
+.rama i{position:absolute;left:0;right:0;display:block;background-repeat:no-repeat;background-position:top center;
+  filter:saturate(.85) brightness(.98) drop-shadow(2px 5px 7px rgba(45,33,22,.22))}
+/* el tallo se repite todo lo largo que haga falta y se desvanece al final */
+.rama__tallo{
+  top:0;bottom:0;
+  background-image:url(../img/rama-tramo.svg);
+  background-repeat:repeat-y;
+  background-size:100% auto;
+  -webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 190px),transparent calc(100% - 40px));
+          mask-image:linear-gradient(to bottom,#000 calc(100% - 190px),transparent calc(100% - 40px));
+}
+/* la mata de arriba */
+.rama__mata{
+  top:0;height:calc(var(--rw) * 300 / 170);
+  background-image:url(../img/rama-cabeza.svg);
+  background-size:100% 100%;
+}
+/* la punta, que acaba dentro del pie */
+.rama__cola{
+  bottom:clamp(26px,6vh,86px);height:calc(var(--rw) * 240 / 170);
+  background-image:url(../img/rama-cola.svg);
+  background-size:100% 100%;
+}
+
 /* ══════════ REVELADO ══════════ */
 .rv{opacity:0;transform:translateY(22px);
   transition:opacity .85s var(--e),transform .85s var(--e)}
@@ -345,6 +395,11 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
 
 /* ══════════ RESPONSIVE ══════════ */
 @media (max-width:980px){
+  :root{--pad:46px}
+  .rama{--rw:70px}
+  .rama--izq{left:-28px}
+  .rama--der{right:-28px}
+  .hdr{padding-inline:var(--pad)}
   .hdr__nav,.hdr__ig{display:none}
   .hdr__burger{display:flex}
   .hero{grid-template-columns:1fr;padding-top:clamp(104px,15vh,150px)}
@@ -360,6 +415,11 @@ h2 + p,h2 + .sub,h2 + .addr,h2 + .lead{margin-top:1.4rem}
   .noche__in .print{width:min(80%,340px);margin-inline:auto}
 }
 @media (max-width:560px){
+  :root{--pad:40px}
+  .word{--u:clamp(42px,10.4vw,70px)}
+  .rama{--rw:62px}
+  .rama--izq{left:-26px}
+  .rama--der{right:-26px}
   .strip{grid-template-columns:1fr 1fr}
   .strip__i:last-child{display:none}
   .sala{grid-template-columns:1fr}

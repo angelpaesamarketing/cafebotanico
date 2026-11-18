@@ -19,7 +19,15 @@ Sacada de su Instagram, no de una plantilla:
   galvanizada minúscula, I roja, C azul y O galvanizada.
 - **Fotos como copias de laboratorio**: borde blanco, giro ligero, sombra y, en
   el hero, un trozo de cinta de carrocero.
-- **Papel pintado floral** de fondo en "La casa", dibujado en SVG.
+- **Papel pintado floral en toda la web**: el fondo es el estampado de la
+  pared del local —marfil, flores de coral, hojas y pajaritos— dibujado en SVG
+  (`papel-pintado.svg`) y repetido. El contenido va encima sobre un panel color
+  pared, como el tabique claro del local, así que el estampado asoma por los
+  márgenes y el pie queda directamente sobre él.
+- **Enredaderas colgando** por los dos lados, de arriba del todo hasta el pie.
+  Son SVG en tres piezas: la mata de arriba, un tramo que se repite todo lo
+  largo que haga falta y la punta, que acaba dentro del pie. El tramo lleva dos
+  tallos trenzados y encaja consigo mismo por arriba y por abajo.
 - **Pizarra con marco de madera** para las tartitas.
 - **Bloque de noche** para tés y cócteles, con la luz de las guirnaldas.
 - Paleta tomada de sus fotos: crema, rojo teja, verde monstera, azul desvaído,
@@ -75,6 +83,8 @@ assets/css/style.css
 assets/js/main.js
 assets/img/logo-dibujo.webp   el logo, recortado sobre transparente
 assets/img/letras/            las ocho letras del titular
+assets/img/papel-pintado.svg  el estampado de la pared (baldosa)
+assets/img/rama-*.svg         la enredadera: mata, tramo y punta
 assets/img/                   fotos
 ```
 
@@ -86,6 +96,9 @@ assets/img/                   fotos
 - **Textos**: redactados a ojo, a validar con el local.
 - **Fotos**: casi todas son recortes de la retícula de Instagram, de baja
   resolución. Hacen falta los originales.
+- **Papel pintado y enredaderas**: están dibujados a partir de las fotos, no
+  escaneados. Si algún día hay una foto frontal y bien iluminada de la pared,
+  el estampado se puede afinar para clavarlo.
 - **Logo**: el dibujo actual está generado, no es el archivo original del
   local. Si aparece el vectorial (`.ai`, `.eps`, `.svg`), merece la pena
   cambiarlo: escalaría sin pérdida y pesaría mucho menos.
