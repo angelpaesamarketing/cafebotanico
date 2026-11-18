@@ -5,10 +5,9 @@
   var qsa = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ───────── INTRO ───────── */
-  var INTRO_MS = 5900;   // duración total de la secuencia
-  var PALE_MS = 2250;    // momento en que el fondo pasa a crema
-  var KEY = 'botanico-intro-v1';
+  /* ───────── INTRO (sólo el logo) ───────── */
+  var INTRO_MS = 4200;
+  var KEY = 'botanico-intro-v2';
   var introNode = qs('#intro');
   var introHTML = introNode ? introNode.outerHTML : '';
   var timers = [];
@@ -29,7 +28,7 @@
     node.classList.add('done');
     setTimeout(function () {
       if (node.parentNode) node.parentNode.removeChild(node);
-    }, 1300);
+    }, 1100);
   }
 
   function runIntro(node) {
@@ -42,7 +41,6 @@
     node.addEventListener('click', function (e) {
       if (e.target.id !== 'skip') skip();
     });
-    timers.push(setTimeout(function () { node.classList.add('pale'); }, PALE_MS));
     timers.push(setTimeout(skip, INTRO_MS));
     try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
   }
@@ -61,23 +59,15 @@
       if (old) old.parentNode.removeChild(old);
       document.body.insertAdjacentHTML('afterbegin', introHTML);
       var fresh = qs('#intro');
-      fresh.classList.remove('done', 'pale');
+      fresh.classList.remove('done');
       runIntro(fresh);
     });
   }
 
-  /* ───────── header + parallax ───────── */
+  /* ───────── header ───────── */
   var hdr = qs('#hdr');
   function onScroll() {
     hdr.classList.toggle('stuck', window.scrollY > 40);
-    var img = qs('#parallax');
-    if (img) {
-      var r = img.closest('.pasaje').getBoundingClientRect();
-      if (r.top < innerHeight && r.bottom > 0) {
-        var p = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;
-        img.style.setProperty('--py', (p * -70).toFixed(1) + 'px');
-      }
-    }
   }
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
@@ -100,7 +90,7 @@
     });
   });
 
-  /* ───────── reveal al hacer scroll ───────── */
+  /* ───────── revelado al hacer scroll ───────── */
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       if (e.isIntersecting) {
@@ -110,15 +100,15 @@
     });
   }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
 
-  qsa('.reveal').forEach(function (el, i) {
-    el.style.transitionDelay = (i % 4) * 70 + 'ms';
+  qsa('.rv').forEach(function (el, i) {
+    el.style.transitionDelay = (i % 4) * 75 + 'ms';
     io.observe(el);
   });
 
   /* red de seguridad: nada se queda invisible si el observer falla */
   addEventListener('load', function () {
     setTimeout(function () {
-      qsa('.reveal').forEach(function (el) {
+      qsa('.rv').forEach(function (el) {
         if (el.getBoundingClientRect().top < innerHeight) el.classList.add('in');
       });
     }, 400);

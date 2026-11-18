@@ -7,32 +7,46 @@ HTML/CSS/JS plano, sin build ni dependencias: se abre `index.html` y funciona.
 python3 -m http.server 4321
 ```
 
+## Estética
+
+Sacada de su Instagram, no de una plantilla:
+
+- **Pared crema con grano de carrete** sobre toda la página.
+- **Letras desparejadas** en el titular, cada una de un tipo, cuerpo, color e
+  inclinación distintos — como las letras de rastro de la pared del local.
+- **Fotos como copias de laboratorio**: borde blanco, giro ligero, sombra y, en
+  el hero, un trozo de cinta de carrocero.
+- **Papel pintado floral** de fondo en "La casa", dibujado en SVG.
+- **Pizarra con marco de madera** para las tartitas.
+- **Bloque de noche** para tés y cócteles, con la luz de las guirnaldas.
+- Paleta tomada de sus fotos: crema, rojo teja, verde monstera, azul desvaído,
+  rosa del papel pintado.
+- Tipografías: **Oswald** (condensada, como el logotipo y los rótulos antiguos)
+  y **Fraunces** con los ejes `SOFT` y `WONK` para los titulares.
+
 ## La intro
 
-Secuencia de ~5,8 s que se reproduce **una vez por sesión** (`sessionStorage`).
-Se puede saltar con el botón o haciendo clic en cualquier sitio, se desactiva
-sola con `prefers-reduced-motion`, y se puede repetir desde el pie de página.
+Sólo el logo, ~4,2 s. Se reproduce **una vez por sesión** (`sessionStorage`),
+se salta con el botón o un clic, se desactiva sola con `prefers-reduced-motion`
+y se puede repetir desde el pie.
 
 | t | qué pasa |
 |---|---|
-| 0,0 s | aparece la fachada real, centrada, con el fondo desenfocado |
-| 0,6 s | las dos hojas de madera se abren en 3D sobre el vano |
-| 1,0 s | la luz cálida del interior se derrama por la puerta |
-| 1,45 s | la cámara entra por el vano (zoom a 15×) |
-| 2,2 s | fundido a crema |
-| 2,55 s | se dibuja la taza, trazo a trazo, y la **B** |
-| 3,25 s | sale el tallo de la taza y se abren las dos hojas |
-| 3,95 s | florece la flor y se abren los gajos |
-| 4,5 s | aparece **CAFE BOTÁNICO** letra a letra |
-| 5,05 s | la intro se disuelve en la web |
+| 0,15 s | se dibuja la taza: boca, cuerpo, asa y plato |
+| 1,0 s | aparece el rayado vertical del cuerpo |
+| 1,05 s | se dibuja la **B** |
+| 1,5 s | sale el tallo de la taza |
+| 1,85 s | se abren las cuatro hojas |
+| 2,28 s | florece la flor y aparece su sombreado |
+| 3,15 s | entra **CAFE BOTANICO** |
 
-![Los ocho momentos de la intro](storyboard-intro.png)
+![Los seis momentos de la intro](storyboard-intro.png)
 
-Las hojas de la puerta se colocan sobre el vano real de la foto con las
-variables de `:root` (`--door-x/y/w/h` y el centro `--door-cx/cy`). Si se cambia
-la foto de fachada hay que reajustar esos seis valores.
-
-El logo es un SVG redibujado a partir del original, para poder animar el trazo.
+El logo está **redibujado en SVG** a partir del original, con sus cinco pétalos,
+el sombreado a lápiz, las cuatro hojas, el rayado de la taza y la B perfilada.
+Lo genera `genlogo.py` (ver abajo) y lleva un filtro `feTurbulence` para que el
+trazo no salga perfecto. El wordmark va en Oswald 600, que es lo más parecido a
+la condensada del logotipo real.
 
 ## Estructura
 
@@ -40,14 +54,16 @@ El logo es un SVG redibujado a partir del original, para poder animar el trazo.
 index.html
 assets/css/style.css
 assets/js/main.js
-assets/img/      fachada · porches · logo original
+assets/logo.svg.html   logo completo, inyectado en la intro
+assets/mark.svg.html   versión compacta para cabecera y pie
+assets/img/            fotos
 ```
 
 ## Pendiente de datos reales
 
 - **Horario**: el del bloque "Visítanos" es inventado.
-- **Carta**: platos y precios son de ejemplo.
+- **Carta**: las tartitas salen de su pizarra, pero los precios son de ejemplo.
+  Lo mismo con tés y cócteles.
 - **Textos**: redactados a ojo, a validar con el local.
-- **Fotos**: las dos actuales son capturas de baja resolución (382×510 px).
-  Hacen falta originales y, además, fotos de interior/plantas, latte art y
-  brunch para los tres huecos marcados en la galería.
+- **Fotos**: casi todas son recortes de la retícula de Instagram, de baja
+  resolución. Hacen falta los originales.
