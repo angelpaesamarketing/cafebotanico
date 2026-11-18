@@ -26,6 +26,8 @@ sola con `prefers-reduced-motion`, y se puede repetir desde el pie de página.
 | 4,5 s | aparece **CAFE BOTÁNICO** letra a letra |
 | 5,05 s | la intro se disuelve en la web |
 
+![Los ocho momentos de la intro](storyboard-intro.png)
+
 Las hojas de la puerta se colocan sobre el vano real de la foto con las
 variables de `:root` (`--door-x/y/w/h` y el centro `--door-cx/cy`). Si se cambia
 la foto de fachada hay que reajustar esos seis valores.
