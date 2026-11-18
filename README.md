@@ -109,6 +109,7 @@ assets/img/tulipa.svg         opalina de sobremesa
 assets/img/farolillo.svg      farolillo de globo
 assets/img/bombilla.svg       bombilla colgante
 assets/img/guirnalda.svg      guirnalda de bolitas
+assets/img/repisa.svg         balda de pared para las de sobremesa
 assets/img/                   fotos
 ```
 

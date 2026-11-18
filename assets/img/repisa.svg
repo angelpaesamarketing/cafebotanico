@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="70" viewBox="0 0 420 70">
+<defs><linearGradient id="tabla" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#8A6942"/><stop offset=".28" stop-color="#6B4F30"/>
+  <stop offset=".6" stop-color="#4A3620"/><stop offset="1" stop-color="#2A1D0E"/></linearGradient>
+<linearGradient id="esc" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#4A3620"/><stop offset="1" stop-color="#241804"/></linearGradient></defs>
+<path d="M71 15 L111 15 L86 66 Z" fill="url(#esc)"/>
+<path d="M309 15 L349 15 L334 66 Z" fill="url(#esc)"/>
+<rect x="0" y="0" width="420" height="17" rx="3" fill="url(#tabla)"/>
+<rect x="0" y="0" width="420" height="3.5" rx="2" fill="#B08E5E" opacity=".55"/>
+<rect x="0" y="14" width="420" height="3" fill="#1A1206" opacity=".75"/>
+</svg>
