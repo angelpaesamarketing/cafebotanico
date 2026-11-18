@@ -12,8 +12,9 @@ python3 -m http.server 4321
 Sacada de su Instagram, no de una plantilla:
 
 - **Pared crema con grano de carrete** sobre toda la página.
-- **Letras desparejadas** en el titular, cada una de un tipo, cuerpo, color e
-  inclinación distintos — como las letras de rastro de la pared del local.
+- **Letras desparejadas** en el titular: son fotos de letras de rastro
+  recortadas sobre transparente, una por archivo, en `assets/img/letras/`.
+  Cada una lleva su propia altura, giro y sombra.
 - **Fotos como copias de laboratorio**: borde blanco, giro ligero, sombra y, en
   el hero, un trozo de cinta de carrocero.
 - **Papel pintado floral** de fondo en "La casa", dibujado en SVG.
@@ -67,3 +68,8 @@ assets/img/            fotos
 - **Textos**: redactados a ojo, a validar con el local.
 - **Fotos**: casi todas son recortes de la retícula de Instagram, de baja
   resolución. Hacen falta los originales.
+- **Letras del titular**: faltan la **I** y la **C**. Ahora mismo van como
+  texto plano en Anton, en rojo y azul, que canta al lado de las otras seis.
+  La segunda **O** es la galvanizada reflejada, a la espera de la blanca.
+- **Dibujo del logo**: la intro sigue usando el SVG redibujado. Pendiente de
+  sustituirlo por el dibujo definitivo.
